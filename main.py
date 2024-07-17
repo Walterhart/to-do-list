@@ -60,15 +60,15 @@ class TodoList:
         else:
             print(f"Task '{id}' not found.")
 
-    def complete_task(self, id):
-        """Mark a task as completed by id."""
+    def toggle_task(self, id):
+        """Toggle completed by id."""
         tasks = self.read_tasks()
 
         for task in tasks:
             if(task['id'] == id):
-                task['complete'] = True
+                task['complete'] = not task['complete']
                 self.save_tasks(tasks)
-                print(f"Task has been mark completed")
+                print(f"Task {id} completion toggled to {task['complete']}.")
                 return
         print(f"Task '{id}' not found.")
     
@@ -97,5 +97,5 @@ todo_list = TodoList()
 
 # todo_list.add_task("buy food", "I am hungry")
 # todo_list.delete_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
-# todo_list.complete_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
-todo_list.update_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620", "Food", "Updated description")
+todo_list.toggle_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
+# todo_list.update_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620", "Food", "Updated description")
