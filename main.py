@@ -92,10 +92,18 @@ class TodoList:
                 return
         print(f"Task with ID '{task_id}' not found.")
 
-
+    def display_tasks(self):
+        """ Display  all tasks """
+        tasks = self.read_tasks()
+        if not tasks:
+            print("No tasks found!")
+        for task in tasks:
+            status = "Completed" if task['complete'] else "Not completed"
+            print(f"ID: {task['id']}\nTitle: {task['title']}\nDescription: {task['description']}\nStatus: {status}\n")
+            
 todo_list = TodoList()
-
+todo_list.display_tasks()
 # todo_list.add_task("buy food", "I am hungry")
 # todo_list.delete_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
-todo_list.toggle_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
+#todo_list.toggle_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620")
 # todo_list.update_task("62fe3ec0-16cd-415c-ad49-b91cd91c4620", "Food", "Updated description")
